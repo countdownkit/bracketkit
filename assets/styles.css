@@ -1,0 +1,152 @@
+:root {
+  --bg: #f5f7fa;
+  --card: #ffffff;
+  --ink: #1f2733;
+  --muted: #64748b;
+  --line: #e2e8f0;
+  --bline: #94a3b8;
+  --accent: #1d4ed8;
+  --accent-ink: #ffffff;
+  --pop: #0f172a;
+  --shadow: 0 1px 2px rgba(15,23,42,.06), 0 8px 24px rgba(15,23,42,.06);
+  --radius: 14px;
+  --conn: 20px;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+  line-height: 1.55;
+  font-size: 17px;
+  overflow-x: hidden;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.wrap { max-width: 960px; margin: 0 auto; padding: 0 18px; }
+
+/* header / footer / crumbs */
+.site-head { border-bottom: 1px solid var(--line); background: var(--card); }
+.site-head .wrap { display: flex; align-items: center; justify-content: space-between; height: 58px; }
+.brand { font-weight: 800; font-size: 19px; color: var(--pop); letter-spacing: -.02em; }
+.brand:hover { text-decoration: none; }
+.nav a { color: var(--muted); font-size: 15px; margin-left: 18px; }
+.crumbs { font-size: 13px; color: var(--muted); margin: 18px 0 4px; }
+.crumbs a { color: var(--muted); }
+h1 { font-size: 28px; line-height: 1.2; letter-spacing: -.02em; margin: 10px 0 14px; }
+.lead { color: var(--muted); margin: 0 0 20px; }
+h2 { font-size: 20px; margin: 30px 0 12px; letter-spacing: -.01em; }
+.site-foot { border-top: 1px solid var(--line); margin-top: 40px; padding: 22px 0 50px; color: var(--muted); font-size: 14px; background: var(--card); }
+.site-foot a { color: var(--muted); }
+.site-foot .wrap { display: flex; flex-wrap: wrap; gap: 8px 18px; }
+
+/* controls */
+.controls { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); padding: 18px; margin: 8px 0 18px; }
+.controls label { display: block; font-size: 13px; color: var(--muted); margin: 0 0 5px; font-weight: 600; }
+.row { display: flex; flex-wrap: wrap; gap: 14px; }
+.row + .row { margin-top: 14px; }
+.row > div { flex: 1; min-width: 130px; }
+.row > div.titlecell { flex: 2.5; min-width: 220px; }
+input, select { width: 100%; padding: 10px 12px; font-size: 16px; border: 1px solid var(--line); border-radius: 10px; background: #fff; color: var(--ink); }
+.ctl-foot { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-top: 14px; }
+.print-btn { font: inherit; font-weight: 700; font-size: 16px; cursor: pointer; background: var(--accent); color: var(--accent-ink); border: 0; border-radius: 10px; padding: 11px 20px; }
+.print-btn:hover { filter: brightness(1.1); }
+.hint { color: var(--muted); font-size: 13px; }
+
+/* the paper */
+.paper { background: #fff; border: 1px solid var(--line); border-radius: 4px; box-shadow: var(--shadow); padding: 26px 28px 30px; margin: 0 0 22px; }
+.bk-title { font-size: 26px; margin: 0 0 18px; text-align: center; letter-spacing: -.01em; outline: none; }
+
+/* horizontal scroll container so wide brackets never push the page sideways */
+.bracket-scroll { overflow-x: auto; max-width: 100%; padding-bottom: 8px; }
+
+/* ---- single-elimination bracket ---- */
+.bracket.single { display: flex; align-items: stretch; min-width: max-content; }
+.bracket.single .round { display: flex; flex-direction: column; flex: 1 0 150px; }
+.bracket.single .round-title { text-align: center; font-size: 11px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); font-weight: 700; padding: 0 0 8px; }
+.bracket.single .matches { display: flex; flex-direction: column; justify-content: center; flex: 1; }
+.bracket.single .match { position: relative; flex: 1; display: flex; flex-direction: column; justify-content: center; min-height: 60px; }
+.bracket.single .round:not(:last-child) .matches .match { padding-right: var(--conn); }
+.bracket.single .round:not(:first-child) .matches .match { padding-left: var(--conn); }
+
+/* connectors drawn with borders/pseudo-elements */
+.bracket.single .round:not(:last-child) .matches .match::after {
+  content: ""; position: absolute; right: 0; top: 50%; width: var(--conn); height: 2px; background: var(--bline); transform: translateY(-1px);
+}
+.bracket.single .round:not(:last-child) .matches .match:nth-child(odd):not(:last-child)::before {
+  content: ""; position: absolute; right: 0; top: 50%; width: 2px; height: 100%; background: var(--bline);
+}
+.bracket.single .round:not(:first-child) .matches .match .matchup::before {
+  content: ""; position: absolute; left: calc(-1 * var(--conn)); top: 50%; width: var(--conn); height: 2px; background: var(--bline); transform: translateY(-1px);
+}
+
+/* ---- plain columns (losers bracket) ---- */
+.bracket.plain { display: flex; align-items: stretch; gap: 22px; min-width: max-content; }
+.bracket.plain .round { display: flex; flex-direction: column; flex: 1 0 150px; }
+.bracket.plain .round-title { text-align: center; font-size: 11px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); font-weight: 700; padding: 0 0 8px; }
+.bracket.plain .matches { display: flex; flex-direction: column; justify-content: space-around; flex: 1; gap: 12px; }
+.bracket.plain .match { display: flex; flex-direction: column; justify-content: center; }
+
+/* matchups + slots */
+.matchup { position: relative; border: 1px solid var(--bline); border-radius: 6px; background: #fff; overflow: hidden; }
+.slot { display: flex; align-items: center; gap: 7px; padding: 5px 9px; min-height: 30px; font-size: 13px; }
+.slot + .slot { border-top: 1px solid var(--bline); }
+.seed { font-size: 11px; color: var(--muted); min-width: 15px; text-align: center; font-weight: 700; }
+.line { flex: 1; min-height: 18px; outline: none; }
+.line:empty::before { content: attr(data-ph); color: #a9b4c2; }
+.slot.bye { color: var(--muted); }
+.slot.bye .line::before { content: none; }
+.champ-box { border-color: var(--accent); background: #f7faff; }
+.champ-slot .line { font-weight: 700; }
+
+/* double elimination stack + grand final */
+.bracket-set { display: flex; flex-direction: column; gap: 18px; }
+.bset-label { font-weight: 800; font-size: 15px; color: var(--pop); margin-top: 4px; }
+.bracket.single.gf { min-width: 0; }
+.bracket.single.gf .round { flex: 0 0 170px; }
+
+/* link grids */
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 8px; margin-bottom: 10px; }
+.grid a { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 11px 13px; color: var(--ink); font-size: 15px; }
+.grid a:hover { border-color: var(--accent); text-decoration: none; }
+.chip-emoji { margin-right: 6px; }
+
+/* prose + ads */
+.prose { margin: 22px 0; }
+.prose p { margin: 0 0 14px; }
+.ad-slot {
+  margin: 22px 0;
+  min-height: 90px;
+  display: flex; align-items: center; justify-content: center;
+  background: repeating-linear-gradient(45deg, #eef2f6, #eef2f6 10px, #f4f7fa 10px, #f4f7fa 20px);
+  border: 1px dashed #cbd5e1;
+  border-radius: 10px;
+  color: #94a3b8; font-size: 12px; letter-spacing: .1em; text-transform: uppercase;
+}
+
+@media (max-width: 620px) {
+  h1 { font-size: 23px; }
+  .paper { padding: 16px 12px 22px; }
+  .bracket.single .round { flex-basis: 130px; }
+  .slot { font-size: 12px; }
+}
+
+/* print: the bracket is the page, everything else disappears */
+@media print {
+  body { background: #fff; font-size: 11pt; overflow: visible; }
+  .no-print, .ad-slot { display: none !important; }
+  .wrap { max-width: none; padding: 0; }
+  .paper { border: none; box-shadow: none; border-radius: 0; padding: 0; margin: 0; }
+  .bracket-scroll { overflow: visible; }
+  .bk-title { font-size: 20pt; margin: 0 0 12pt; }
+  .matchup { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .champ-box { background: #f7faff !important; }
+  /* scale big brackets down so they still fit one landscape page */
+  .sz-16 .slot { font-size: 10px; min-height: 24px; padding: 3px 6px; }
+  .sz-32 .slot { font-size: 8px; min-height: 17px; padding: 2px 4px; }
+  .sz-32 .seed { font-size: 7px; min-width: 11px; }
+  .sz-32 .bracket.single .round { flex-basis: 96px; }
+  .sz-16 .bracket.single .round { flex-basis: 120px; }
+}
