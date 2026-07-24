@@ -62,7 +62,7 @@ function layout({ title, desc, urlPath, h1, body }) {
 </main>
 <footer class="site-foot no-print"><div class="wrap">
   <a href="${BASE}/">Home</a><a href="${BASE}/#sizes">Bracket sizes</a><a href="${BASE}/#formats">Formats</a>
-  <span>· ${SITE} — free printable tournament brackets. No downloads, no signups: fill in the names and print. Part of <a href="https://elevatedprogress.com/">Elevated Progress</a>.</span>
+  <span>· ${SITE} — free printable tournament brackets. No downloads, no signups: fill in the names and print. Part of <a href="https://elevatedprogress.com/">Elevated Progress</a>. · <a href="https://elevatedprogress.com/privacy/">Privacy Policy</a></span>
 </div></footer>
 <script src="${BASE}/bracket.js"></script>
 <script src="${BASE}/tool.js" defer></script>
