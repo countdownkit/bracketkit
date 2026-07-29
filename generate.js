@@ -156,7 +156,22 @@ for (const entry of PAGES) bracketPage(entry);
   <h2 id="blank">Blank brackets</h2>
   ${grid(inGroup("blank"))}
   <div class="ad-slot no-print">Advertisement</div>
-  <div class="prose"><p>These are working brackets, not template downloads: the bracket you see on each page is the one that prints. Change the field size and the rounds redraw instantly, non-power-of-two sizes get first-round byes placed for you, and the print stylesheet strips everything else off the page automatically. Generic tournament brackets for any sport, game, or contest — no team names or logos baked in.</p></div>`;
+  <div class="prose"><p>These are working brackets, not template downloads: the bracket you see on each page is the one that prints. Change the field size and the rounds redraw instantly, non-power-of-two sizes get first-round byes placed for you, and the print stylesheet strips everything else off the page automatically. Generic tournament brackets for any sport, game, or contest — no team names or logos baked in.</p></div>
+  <h2>How to set up a tournament bracket</h2>
+  <div class="prose">
+    <p>Decide how many teams or players are entered, then pick the matching size — 4, 8, 16, or 32 for a full field, or another number for a bracket with byes. Seeding means ranking your entrants from strongest to weakest before the draw. The slots follow standard seed order, which spreads the top seeds apart: the number-one and number-two seeds sit at opposite ends and can only meet in the final. For a casual event, skip seeding and drop names in at random.</p>
+    <p>In single elimination, one loss knocks a team out, so the field runs down to a champion in log2 rounds — three for 8 teams, four for 16, five for 32. Double elimination gives everyone a second chance: a team has to lose twice to be eliminated. The winners bracket runs as usual, anyone who loses drops into a separate losers bracket, and the two survivors meet in a grand final. That means more matches, but nobody is out after one bad game.</p>
+    <p>When your entry count isn't a power of two — 6 teams, 12 teams, or an odd number — the bracket adds first-round byes for you. A bye lets a top seed skip round one, which is why a 6-team bracket sends its two best seeds directly to the semifinals. The byes are placed in seed order automatically.</p>
+    <p>Every name line is editable: click a slot and type the name. Add a title across the top, choose landscape for the roomiest layout, and print — or pick "Save as PDF" in the same dialog. Only the bracket prints; the controls and everything else are stripped away.</p>
+  </div>
+  <h2>Frequently asked questions</h2>
+  <div class="prose">
+    <p><strong>What if I don't have exactly 8 or 16 teams?</strong> Pick the next size up and the leftover slots become first-round byes, or choose an exact size such as 3 or 6 that builds the byes in for you.</p>
+    <p><strong>What's the difference between single and double elimination?</strong> Single elimination removes a team after one loss. Double elimination requires two losses and adds a losers bracket plus a grand final — more forgiving, but roughly twice as many games.</p>
+    <p><strong>How do I fill it in?</strong> Click any name line and type. Fill it on screen before printing, or print it blank and pencil the names in by hand.</p>
+    <p><strong>How many rounds will my bracket have?</strong> For a full power-of-two field it is log2 of the team count: 4 teams is 2 rounds, 8 is 3, 16 is 4, and 32 is 5. Byes don't add rounds.</p>
+    <p><strong>Can I use these for any sport or game?</strong> Yes — every bracket is generic, with no team names or logos, so it works for any sport, video game, card game, or office contest.</p>
+  </div>`;
   writePage(`/`, layout({ title, desc, urlPath: `/`, h1: `Free Printable Tournament Brackets`, body }));
 }
 
